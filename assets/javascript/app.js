@@ -1,26 +1,35 @@
-// alert("linked");
+(function($) {
+  //Function to animate slider captions
+  function doAnimations(elems) {
+    //Cache the animationend event in a variable
+    var animEndEv = "webkitAnimationEnd animationend";
 
-// $(document).ready(function() {});
-
-// $(".explore").addClass("animated bounce");
-// $(".explore").one(
-//   "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
-//   function() {
-//     $(".explore").addClass("delay fadeOutRight");
-//   }
-// );
-// $(".pause").addClass("animated bounce");
-// $(".pause").one(
-//   "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
-//   function() {
-//     $(".pause").addClass("delay zoomOutDown");
-//   }
-// );
-
-$(".bounce").addClass("animated bounce");
-$(".bounce").one(
-  "webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
-  function() {
-    $(".bounce").addClass("delay zoomOutDown");
+    elems.each(function() {
+      var $this = $(this),
+        $animationType = $this.data("animation");
+      $this.addClass($animationType).one(animEndEv, function() {
+        $this.removeClass($animationType);
+      });
+    });
   }
-);
+
+  //Variables on page load
+  var $myCarousel = $("#carouselExampleIndicators"),
+    $firstAnimatingElems = $myCarousel
+      .find(".carousel-item:first")
+      .find("[data-animation ^= 'animated']");
+
+  //Initialize carousel
+  $myCarousel.carousel();
+
+  //Animate captions in first slide on page load
+  doAnimations($firstAnimatingElems);
+
+  //Other slides to be animated on carousel slide event
+  $myCarousel.on("slide.bs.carousel", function(e) {
+    var $animatingElems = $(e.relatedTarget).find(
+      "[data-animation ^= 'animated']"
+    );
+    doAnimations($animatingElems);
+  });
+})(jQuery);
