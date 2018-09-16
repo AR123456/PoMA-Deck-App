@@ -1,0 +1,32 @@
+.divCenter {
+  padding-top: 10%;
+}
+
+.explore {
+  text-align: left;
+  color: aquamarine;
+}
+
+.relax {
+  text-align: left;
+  color: green;
+}
+.pause {
+  text-align: left;
+  color: blue;
+}
+.animated {
+  -webkit-animation-duration: 2500ms;
+  -moz-animation-duration: 2500ms;
+  animation-duration: 2500ms;
+}
+.delay {
+  -animation-delay: 3s;
+  -webkit-animation-delay: 3s;
+  -moz-animation-delay: 3s;
+}
+div {
+  font-size: 60px;
+  color: black;
+  text-align: center;
+}
