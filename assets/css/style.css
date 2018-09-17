@@ -51,6 +51,12 @@
   -webkit-animation-delay: 2s;
   animation-delay: 2s;
 }
+/* to slow speed of carosel   */
+/* .carousel-inner > .item {
+  -webkit-transition: -webkit-transform 1.2s ease-in-out !important;
+  -o-transition: -o-transform 1.2s ease-in-out !important;
+  transition: transform 1.2s ease-in-out !important;
+} */
 
 h1 {
   text-align: center;
